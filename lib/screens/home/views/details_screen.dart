@@ -127,14 +127,27 @@ class DetailsScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 40),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: 50,
                       child: TextButton(
                         onPressed: () {},
+                        style: TextButton.styleFrom(
+                          elevation: 3.0,
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)
+                          )
+                        ),
                         child: const Text(
                           "Add to Cart",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600
+                          ),
                         ),
                       ),
                     )
