@@ -70,14 +70,16 @@ class HommeScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute<void>(
                               builder: (BuildContext context) =>
-                                  const DetailsScreen(),
+                                  DetailsScreen(
+                                    state.pizzas[i],
+                                  ),
                             ),
                           );
                         },
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('assets/1.png'),
+                            Image.network(state.pizzas[i].picture),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 12.0),
@@ -85,15 +87,17 @@ class HommeScreen extends StatelessWidget {
                                 children: [
                                   Container(
                                       decoration: BoxDecoration(
-                                        color: Colors.red,
+                                        color: state.pizzas[i].isVeg ? Colors.green :
+                                          Colors.red ,
                                         borderRadius: BorderRadius.circular(30),
                                       ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.symmetric(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
                                             vertical: 4, horizontal: 8),
                                         child: Text(
+                                          state.pizzas[i].isVeg ? "VEG" :
                                           "NON-VEG",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 10,
@@ -106,13 +110,22 @@ class HommeScreen extends StatelessWidget {
                                         color: Colors.green.withOpacity(0.2),
                                         borderRadius: BorderRadius.circular(30),
                                       ),
-                                      child: const Padding(
-                                        padding: EdgeInsets.symmetric(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
                                             vertical: 4, horizontal: 8),
                                         child: Text(
-                                          "🌶️ BALANCE",
+                                          state.pizzas[i].spicy == 1 
+                                          ? "🌶️ BLAND"
+                                          : state.pizzas[i].spicy == 2
+                                          ? "🌶️ BALANCE"
+                                          : "🌶️ SPICY",
                                           style: TextStyle(
-                                            color: Colors.green,
+                                            color:
+                                             state.pizzas[i].spicy == 1 
+                                          ? Colors.green
+                                          : state.pizzas[i].spicy == 2
+                                          ? Colors.orange
+                                          : Colors.redAccent,
                                             fontWeight: FontWeight.w800,
                                             fontSize: 10,
                                           ),
@@ -122,11 +135,11 @@ class HommeScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 8),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 12.0),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12.0),
                               child: Text(
-                                "Cheesy Marvel",
-                                style: TextStyle(
+                                state.pizzas[i].name,
+                                style: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -136,7 +149,7 @@ class HommeScreen extends StatelessWidget {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 12.0),
                               child: Text(
-                                "Crafting Joy: your pizza your rules, best taste",
+                                state.pizzas[i].description,
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.grey.shade500,
@@ -153,7 +166,7 @@ class HommeScreen extends StatelessWidget {
                                     Row(
                                       children: [
                                         Text(
-                                          "\$12.00",
+                                           "\$${state.pizzas[i].price - (state.pizzas[i].price * (state.pizzas[i].discount) / 100)}",
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: Theme.of(context)
@@ -164,7 +177,7 @@ class HommeScreen extends StatelessWidget {
                                         ),
                                         const SizedBox(width: 5),
                                         Text(
-                                          "\$15.00",
+                                          "\$${state.pizzas[i].price}.00",
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: Colors.grey.shade500,
