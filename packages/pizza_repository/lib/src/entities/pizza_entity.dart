@@ -10,7 +10,7 @@ class PizzaEntity {
   String description;
   double price;
   double discount;
-  List<Macros> macros;
+  Macros macros;
 
   PizzaEntity({
     required this.pizzaId,
@@ -34,7 +34,7 @@ class PizzaEntity {
       'description': description,
       'price': price,
       'discount': discount,
-      'macros': macros.map((macro) => macro.toEntity().toDocument())
+      'macros': macros.toEntity().toDocument()
     };
   }
 
@@ -48,7 +48,7 @@ class PizzaEntity {
       description: doc['description'],
       price: doc['price'],
       discount: doc['discount'],
-      macros: doc['macros'].map((macro) => Macros.fromEntity(MacrosEntity.fromDocument(macro))),
+      macros: Macros.fromEntity(MacrosEntity.fromDocument(doc['macros']))
     );
   }
 }
