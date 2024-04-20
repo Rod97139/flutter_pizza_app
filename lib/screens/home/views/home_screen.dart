@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pizza_app/screens/auth/blocs/sign_in_bloc/sign_in_bloc.dart';
+import 'package:flutter_pizza_app/screens/home/views/details_screen.dart';
 
 class HommeScreen extends StatelessWidget {
   const HommeScreen({super.key});
@@ -61,7 +62,12 @@ class HommeScreen extends StatelessWidget {
               child: InkWell(
                 borderRadius: BorderRadius.circular(20),
                 onTap: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => const DetailsScreen(),
+                    ),
+                  );
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

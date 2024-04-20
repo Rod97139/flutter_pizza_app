@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pizza_app/app.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_pizza_app/main.dart';
+// import 'package:flutter_pizza_app/main.dart';
 import 'package:user_repository/user_repository.dart';
 
 void main() {
