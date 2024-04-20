@@ -39,6 +39,8 @@ dependencies:
 
   user_repository:
     path: packages/user_repository
+  pizza_repository:
+    path: packages/pizza_repository
 
 
   # The following adds the Cupertino Icons font to your application.
